@@ -3,6 +3,10 @@
 -- so find the least populated country in Southern Europe, and we'll start looking for her there.
  
 -- Write SQL query here
+SELECT name FROM country 
+WHERE region = 'Southern Europe' 
+ORDER BY population LIMIT 1;
+
 
 
 -- Clue #2: Now that we're here, we have insight that Carmen was seen attending language classes in
@@ -11,12 +15,19 @@
 
 -- Write SQL query here
 
+SELECT * FROM countrylanguage 
+WHERE countrycode = 'VAT';
+
 
 -- Clue #3: We have new news on the classes Carmen attended – our gumshoes tell us she's moved on
 -- to a different country, a country where people speak only the language she was learning. Find out which
 -- nearby country speaks nothing but that language.
 
 -- Write SQL query here
+
+SELECT * FROM countrylanguage 
+WHERE language = 'Italian'
+ORDER BY percentage DESC LIMIT 1;
 
 
 -- Clue #4: We're booking the first flight out – maybe we've actually got a chance to catch her this time.
@@ -25,6 +36,8 @@
 -- be flying to.
 
 -- Write SQL query here
+SELECT * FROM city
+WHERE countrycode = 'SMR' AND Name != 'San Marino';
 
 
 -- Clue #5: Oh no, she pulled a switch – there are two cities with very similar names, but in totally different
@@ -32,7 +45,6 @@
 -- headed to, but doesn't end the same. Find out the city, and do another search for what country it's in. Hurry!
 
 -- Write SQL query here
-
 
 -- Clue #6: We're close! Our South American agent says she just got a taxi at the airport, and is headed towards
 -- the capital! Look up the country's capital, and get there pronto! Send us the name of where you're headed and we'll
